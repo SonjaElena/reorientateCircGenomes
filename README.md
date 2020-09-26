@@ -21,7 +21,7 @@ reorientFasta(x, replicon = 1, gff = NA, location = position)
 
 ``` C
 x	
-``` C
+```
 list of DNAStringSets
 
 replicon = the replicon to be reoriented. Defaults to the largest replicon. Numbers increase with degreasing length (largest replicon = 1, second largest = 2, ...).
