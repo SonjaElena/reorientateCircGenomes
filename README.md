@@ -16,7 +16,7 @@ This package has first been introduced here:
 
 ## Usage
 
-###### A function that batch reorientes a list of fasta files to start at the location given as vector of bp position or Protein IDs.
+##### A function that batch reorientes a list of fasta files to start at the location given as vector of bp position or Protein IDs.
 ``` C
 reorientFasta(x, replicon = 1, gff = NA, location = position)
 ```
@@ -29,7 +29,7 @@ reorientFasta(x, replicon = 1, gff = NA, location = position)
 * `location` vector of the starting positions in base pairs at which the Fasta file is to begin. Alternatively, a vector of protein IDs can be used if the corresponding gff objects are supplied.
 
 
-###### A function that batch reorientes a list of gff files to start at the location given as vector of bp position or Protein IDs.
+##### A function that batch reorientes a list of gff files to start at the location given as vector of bp position or Protein IDs.
 ``` C
 reorientGff(x, location = position, replicon = NA, prokka = FALSE)
 ```
@@ -42,7 +42,7 @@ reorientGff(x, location = position, replicon = NA, prokka = FALSE)
 * `prokka` did the gff file originate as prokka output.
 
 
-###### A function that plots the GC Skew, genes on plus and minus strand and location of selected genes. The output consists of a list containing the plot and a list of the regulators with their locations.
+##### A function that plots the GC Skew, genes on plus and minus strand and location of selected genes. The output consists of a list containing the plot and a list of the regulators with their locations.
 ``` C
 circGenomePlot(x, gff = NA, proteinID = proteinID, radius1 = 10, radius2 = 12, radius3 = 13, radius4 = 14, radius5 = 15)
 ```
@@ -52,7 +52,7 @@ circGenomePlot(x, gff = NA, proteinID = proteinID, radius1 = 10, radius2 = 12, r
 * `radius` allows the adjustment of each circle.
 
 
-###### A function that processes Gff files that originate from Prokka output.
+##### A function that processes Gff files that originate from Prokka output.
 ``` C
 gff_convert(x, reorient=FALSE)
 ```
