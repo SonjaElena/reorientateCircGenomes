@@ -3,7 +3,7 @@
 reorient_circular_Genomes is a R package to modify and visualize circular genomes. It can reorient fasta and gff files that originate from NCBI or Prokka based on base pair location or ProteinID. It can also visualize the circular genome, including strand information, the GC Skew and locations of selected genes.
 
 This package has first been introduced here:
-[**Koppenhöfer S, Tomasch J, Lang A.S.** Title. *Journal* year.](link here)
+[**Koppenhöfer S., Tomasch J., Lang A.S.** Title. *Journal* year.](link here)
 
 ## Dependencies
 - [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html)
@@ -18,6 +18,8 @@ This package has first been introduced here:
 ``` C
 reorientFasta(x, replicon = 1, gff = NA, location = position)
 ```
+A function that batch reorientes a list of fasta files to start at the location given as vector of bp position or Protein IDs.
+
 * `x` a list of DNAStringSets
 
 * `replicon` the replicon to be reoriented. Defaults to the largest replicon. Numbers increase with degreasing length (largest replicon = 1, second largest = 2, ...).
@@ -30,6 +32,16 @@ reorientFasta(x, replicon = 1, gff = NA, location = position)
 ``` C
 reorientGff(x, location = position, replicon = NA, prokka = FALSE)
 ```
+A function that batch reorientes a list of gff files to start at the location given as vector of bp position or Protein IDs.
+
+* `x` a list of tables containing gff information.
+
+* `location` starting positions in base pairs or of protein IDs.
+
+* `replicon` replicon identifiers based on which the Gff files should be subsetted.
+
+* `prokka` did the gff file originate as prokka output.
+
 
 ``` C
 circGenomePlot <- function(x, gff = NA, proteinID = proteinID, radius1 = 10, radius2 = 12, radius3 = 13, radius4 = 14, radius5 = 15)
