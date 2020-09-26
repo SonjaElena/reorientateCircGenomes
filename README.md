@@ -18,17 +18,13 @@ This package has first been introduced here:
 ``` C
 reorientFasta(x, replicon = 1, gff = NA, location = position)
 ```
+* `x` a list of DNAStringSets
 
-``` C
-x	
-```
-list of DNAStringSets
+* `replicon` the replicon to be reoriented. Defaults to the largest replicon. Numbers increase with degreasing length (largest replicon = 1, second largest = 2, ...).
 
-replicon = the replicon to be reoriented. Defaults to the largest replicon. Numbers increase with degreasing length (largest replicon = 1, second largest = 2, ...).
+* `gff`	a list of tables containing gff information. Required if location is given by Protein ID.
 
-gff	= list of tables containing gff information. Required if location is given by Protein ID.
-
-location	= vector of the starting positions in base pairs at which the Fasta file is to begin. Alternatively, a vector of protein IDs can be used if the corresponding gff objects are supplied.
+* `location` vector of the starting positions in base pairs at which the Fasta file is to begin. Alternatively, a vector of protein IDs can be used if the corresponding gff objects are supplied.
 
 
 ``` C
