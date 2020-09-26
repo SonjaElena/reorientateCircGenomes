@@ -13,6 +13,11 @@ This package has first been introduced here:
 
 
 ## Installation
+``` C
+# Install reorient_circular_Genomes from GitHub:
+# install.packages("devtools")
+devtools::install_github("r-lib/reorient_circular_Genomes")
+```
 
 ## Usage
 
