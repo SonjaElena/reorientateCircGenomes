@@ -42,10 +42,20 @@ reorientGff(x, location = position, replicon = NA, prokka = FALSE)
 * `prokka` did the gff file originate as prokka output.
 
 
+A function that plots the GC Skew, genes on plus and minus strand and location of selected genes. The output consists of a list containing the plot and a list of the regulators with their locations.
 ``` C
-circGenomePlot <- function(x, gff = NA, proteinID = proteinID, radius1 = 10, radius2 = 12, radius3 = 13, radius4 = 14, radius5 = 15)
+circGenomePlot(x, gff = NA, proteinID = proteinID, radius1 = 10, radius2 = 12, radius3 = 13, radius4 = 14, radius5 = 15)
 ```
+* `x` a list of DNAStringSets.
+* `gff` list of tables containing gff information. Files need to be output of function reorientGff() or colnames of start and end that should be used need to be labeled "NewStart" and "NewEnd".
+* `proteinID` vector of protein IDs whose gene position is to be shown in the plot.
+* `radius` allows the adjustment of each circle.
 
+
+A function that processes Gff files that originate from Prokka output.
 ``` C
-gff_convert <- function(x, reorient=FALSE)
+gff_convert(x, reorient=FALSE)
 ```
+* `x` directory and file name of the Gff object to be processed. File could be read with function list.files.object.
+* `reorient` should function reorientGff() be used after this function = TRUE
+
