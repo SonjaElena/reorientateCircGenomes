@@ -9,9 +9,8 @@ This package has first been introduced here:
 - [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html)
 - [BSgenome](http://bioconductor.org/packages/release/bioc/html/BSgenome.html)
 - [tidyverse](https://www.tidyverse.org/)
-- [dplyr](https://dplyr.tidyverse.org/)
-- [roxygen2](https://roxygen2.r-lib.org/)
-- [devtools](https://github.com/r-lib/devtools)
+- [ggbio](http://www.bioconductor.org/packages/release/bioc/html/ggbio.html/)
+
 
 ## Installation
 
