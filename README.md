@@ -18,3 +18,24 @@ This package has first been introduced here:
 ``` C
 reorientFasta(x, replicon = 1, gff = NA, location = position)
 ```
+### Arguments
+x	= list of DNAStringSets
+
+replicon = the replicon to be reoriented. Defaults to the largest replicon. Numbers increase with degreasing length (largest replicon = 1, second largest = 2, ...).
+
+gff	= list of tables containing gff information. Required if location is given by Protein ID.
+
+location	= vector of the starting positions in base pairs at which the Fasta file is to begin. Alternatively, a vector of protein IDs can be used if the corresponding gff objects are supplied.
+
+
+``` C
+reorientGff(x, location = position, replicon = NA, prokka = FALSE)
+```
+
+``` C
+circGenomePlot <- function(x, gff = NA, proteinID = proteinID, radius1 = 10, radius2 = 12, radius3 = 13, radius4 = 14, radius5 = 15)
+```
+
+``` C
+gff_convert <- function(x, reorient=FALSE)
+```
