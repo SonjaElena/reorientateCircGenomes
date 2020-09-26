@@ -12,3 +12,5 @@ This package has first been introduced here:
 - [dplyr](https://dplyr.tidyverse.org/)
 - [roxygen2](https://roxygen2.r-lib.org/)
 - [devtools](https://github.com/r-lib/devtools)
+
+## Usage
