@@ -15,11 +15,11 @@ This package has first been introduced here:
 ## Installation
 
 ## Usage
+
+A function that batch reorientes a list of fasta files to start at the location given as vector of bp position or Protein IDs.
 ``` C
 reorientFasta(x, replicon = 1, gff = NA, location = position)
 ```
-A function that batch reorientes a list of fasta files to start at the location given as vector of bp position or Protein IDs.
-
 * `x` a list of DNAStringSets
 
 * `replicon` the replicon to be reoriented. Defaults to the largest replicon. Numbers increase with degreasing length (largest replicon = 1, second largest = 2, ...).
@@ -29,11 +29,10 @@ A function that batch reorientes a list of fasta files to start at the location 
 * `location` vector of the starting positions in base pairs at which the Fasta file is to begin. Alternatively, a vector of protein IDs can be used if the corresponding gff objects are supplied.
 
 
+A function that batch reorientes a list of gff files to start at the location given as vector of bp position or Protein IDs.
 ``` C
 reorientGff(x, location = position, replicon = NA, prokka = FALSE)
 ```
-A function that batch reorientes a list of gff files to start at the location given as vector of bp position or Protein IDs.
-
 * `x` a list of tables containing gff information.
 
 * `location` starting positions in base pairs or of protein IDs.
