@@ -16,3 +16,6 @@ This package has first been introduced here:
 ## Installation
 
 ## Usage
+``` C
+reorientFasta(x, replicon = 1, gff = NA, location = position)
+```
