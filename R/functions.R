@@ -53,6 +53,8 @@ processNCBIgff <- function(x){
   
   gff <- inner_join(gff_splitB2, gff_split2, by = "ID")
   
+  gff$alternend <- gff$end
+  gff$alternend[-nrow(gff)][gff$end[-nrow(gff)]>=gff$start[-1]] <- gff$start[-1][gff$end[-nrow(gff)]>=gff$start[-1]]-1
   
   
   
@@ -145,7 +147,8 @@ reorientgff <- function(x, proteinID = NA, bplocation = bp_location, replicon = 
   
   
   # size of genome
-  if(is.character(Rep_size)){
+  
+  if(class(Rep_size) == "DNAStringSet"){
     names(Rep_size) <- names(Rep_size) %>% strsplit(., " ") %>% sapply(.,"[",1)
     chr_size2 <- Rep_size[names(Rep_size) %in% Rep_size[unique(gff$Replicon)]]
     chr_size <- width(chr_size2)
@@ -226,8 +229,8 @@ reorientfna <- function(x, replicon = NA, bplocation = NA, proteinID = NA, gff =
 circGenomePlot <- function(x, gff = gff, proteinID = proteinID, reorigff = FALSE){
   
   # GC skew
-  slw <- x %>% width(.) %>% seq(1,., 10000) %>% .[-length(.)] %>%
-    IRanges(start = ., width = 10000)
+  slw <- x %>% width(.) %>% seq(1,., 5000) %>% .[-length(.)] %>%
+    IRanges(start = ., width = 5000)
   
   GC_Skew <- data.frame(start = start(slw),
                         end = end(slw),
@@ -295,12 +298,12 @@ circGenomePlot <- function(x, gff = gff, proteinID = proteinID, reorigff = FALSE
                        strand = genes_plus$strand,
                        seqinfo = info)
     gr_minus <- GRanges(seqnames = "Chromosome",
-                        IRanges(start = genes_minus$Ostart,
+                        IRanges(start = genes_minus$start,
                                 end = genes_minus$alternend),
                         strand = genes_minus$strand,
                         seqinfo = info)
     gr_reg <- GRanges(seqnames = "Chromosome",
-                      IRanges(start = regu$Ostart,
+                      IRanges(start = regu$start,
                               end = regu$alternend),
                       strand = "*",
                       seqinfo = info)
