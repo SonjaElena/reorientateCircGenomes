@@ -53,11 +53,7 @@ processNCBIgff <- function(x){
   
   gff <- inner_join(gff_splitB2, gff_split2, by = "ID")
   
-  gff$alternend <- gff$end
-  gff$alternend[-nrow(gff)][gff$end[-nrow(gff)]>=gff$start[-1]] <- gff$start[-1][gff$end[-nrow(gff)]>=gff$start[-1]]-1
-  
-  
-  
+
   return(gff)
 }
 
@@ -98,11 +94,6 @@ processProkkagff <- function(x){
   colnames(gff)[1:5] <- c("Replicon", "Type", "start", "end", "strand")
   
   
-  # alternative end
-  gff$alternend <- gff$end
-  gff$alternend[-nrow(gff)][gff$end[-nrow(gff)]>=gff$start[-1]] <- gff$start[-1][gff$end[-nrow(gff)]>=gff$start[-1]]-1
-  
-  
   return(gff)
   
 }
@@ -124,6 +115,7 @@ processProkkagff <- function(x){
 #' gff <- reorientgff(gff, "WP_012176686.1")
 #' gff <- reorientgff(gff, bplocation = 1866, replicon = "CP000031.2")
 #' gff <- reorientgff(gff, proteinID = "AAV97145.1", replicon = "CP000032.1")
+#' gff <- reorientgff(gff, bplocation = 0, Rep_size = fna_path)
 #' @export
 reorientgff <- function(x, proteinID = NA, bplocation = bp_location, replicon = NA, Rep_size = fasta){
   
@@ -159,11 +151,13 @@ reorientgff <- function(x, proteinID = NA, bplocation = bp_location, replicon = 
   gff$Ostart <- gff$start - bplocation
   gff$Oend <- gff$end - bplocation
   
-  testx <- subset(gff, gff$Ostart < 0)
-  gff$Ostart[gff$Ostart < 0] <- chr_size - (abs(testx$Ostart))
-  
-  testx <- subset(gff, gff$Oend < 0)
-  gff$Oend[gff$Oend < 0] <- chr_size - (abs(testx$Oend))
+  if(sum(gff$Ostart<0 | gff$Oend<0)>0){
+    testx <- subset(gff, gff$Ostart < 0)
+    gff$Ostart[gff$Ostart < 0] <- chr_size - (abs(testx$Ostart))
+    
+    testx <- subset(gff, gff$Oend < 0)
+    gff$Oend[gff$Oend < 0] <- chr_size - (abs(testx$Oend))
+  }
   
   
   # reorientation based on alternative end
