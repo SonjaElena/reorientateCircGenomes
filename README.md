@@ -82,6 +82,9 @@ Examples:
 gff <- reorientgff(gff, "WP_012176686.1")
 gff <- reorientgff(gff, bplocation = 1866, replicon = "CP000031.2")
 gff <- reorientgff(gff, proteinID = "AAV97145.1", replicon = "CP000032.1")
+
+# when no reorientation is required but the file should be used for the circular plot afterwards
+gff <- reorientgff(gff, bplocation = 0, Rep_size = fna_path)
 ```
 
 
