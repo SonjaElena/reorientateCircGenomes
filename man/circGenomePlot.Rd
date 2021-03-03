@@ -2,33 +2,27 @@
 % Please edit documentation in R/functions.R
 \name{circGenomePlot}
 \alias{circGenomePlot}
-\title{Circular genomic plots}
+\title{Generation of a circular genomic plot}
 \usage{
-circGenomePlot(
-  x,
-  gff = NA,
-  proteinID = proteinID,
-  radius1 = 10,
-  radius2 = 12,
-  radius3 = 13,
-  radius4 = 14,
-  radius5 = 15
-)
+circGenomePlot(x, gff = gff, proteinID = proteinID, reorigff = FALSE)
 }
 \arguments{
-\item{x}{list of DNAStringSets.}
+\item{x}{DNAStringSet of nucleotide sequences in fasta formate.}
 
-\item{gff}{list of tables containing gff information. Files need to be output of function reorientGff() or colnames of start and end that should be used need to be labeled "NewStart" and "NewEnd".}
+\item{gff}{Processed gff file, has to be output of either functions processProkkagff() or processNCBIgff(), since a column with alternative end is generated that is used in this function. This file can have been reoriented afterwards with function reorientgff().}
 
-\item{proteinID}{vector of protein IDs whose gene position is to be shown in the plot.}
+\item{proteinID}{Vector of ProteinIDs to be indicated in the plot.}
 
-\item{radius}{radius adjustment of each circle.}
+\item{reorientgff}{If TRUE uses columns with names "Ostart" and "Oend" to obtain the base pair location. Defaults to FALSE and uses columns with names "start" and "end".}
+}
+\value{
+List containing the circular plot and data.frame of regulator location.
 }
 \description{
-A function that plots the GC Skew, genes on plus and minus strand and location of selected genes. The output consists of a list containing the plot and a list of the regulators with their locations.
+Generates a genomic plot indicating locations of regulators and showing the GC skew, based on gff file.
+only one replicon.
 }
 \examples{
-circGenomePlot()
+vect <- c("AAV93333.1", "AAV93335.1")
+plot <- circGenomePlot(fasta, gff3, vect, reorigff = TRUE)
 }
-\keyword{genomics}
-\keyword{plot}
