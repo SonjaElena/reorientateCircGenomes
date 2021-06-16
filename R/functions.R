@@ -53,7 +53,7 @@ processNCBIgff <- function(x){
   
   gff <- inner_join(gff_splitB2, gff_split2, by = "ID")
   
-
+  
   return(gff)
 }
 
@@ -161,10 +161,9 @@ reorientgff <- function(x, proteinID = NA, bplocation = bp_location, replicon = 
   
   
   # reorientation based on alternative end
-  chr_size2 <- max(gff$alternend)
   gff$Oaltend <- gff$alternend - bplocation
   testx <- subset(gff, gff$Oaltend < 0)
-  gff$Oaltend[gff$Oaltend < 0] <- chr_size2 - (abs(testx$Oaltend))
+  gff$Oaltend[gff$Oaltend < 0] <- chr_size - (abs(testx$Oaltend))
   
   
   return(gff)
