@@ -136,7 +136,7 @@ reorientgff <- function(x, proteinID = NA, bplocation = bp_location, replicon = 
   if(!is.na(proteinID)){
     bplocation <- subset(gff, ProteinID == proteinID)$start
   }
-  
+  bplocation <-  bplocation-1
   
   # size of genome
   if(class(Rep_size) == "DNAStringSet"){
@@ -250,10 +250,10 @@ circGenomePlot <- function(x, gff = gff, proteinID = proteinID, reorigff = FALSE
   regu <- gff[gff$ProteinID %in% proteinID,]
   
   # plot object
-  info <- Seqinfo("Chromosome", seqlengths = max(GC_Skew$end) , isCircular = T, genome = "Genome")
+  info <- Seqinfo("Chromosome", seqlengths = width(x) , isCircular = T, genome = "Genome")
   
   gr_start <- GRanges(seqnames = "Chromosome",
-                      IRanges(start = 0.01,
+                      IRanges(start = 1,
                               end = 1.01),
                       strand = "*",
                       seqinfo = info)
@@ -262,7 +262,7 @@ circGenomePlot <- function(x, gff = gff, proteinID = proteinID, reorigff = FALSE
   # GRange objects
   gr_gcskew <- GRanges(seqnames = "Chromosome",
                        IRanges(start = GC_Skew$start,
-                               end = GC_Skew$end+1),
+                               end = GC_Skew$end),
                        strand = "*",
                        mcols = GC_Skew[,c(3,4)],
                        seqinfo = info)
@@ -300,6 +300,7 @@ circGenomePlot <- function(x, gff = gff, proteinID = proteinID, reorigff = FALSE
                       strand = "*",
                       seqinfo = info)
   }
+ 
   
   image <- ggbio() +
     circle(gr_plus,  geom = 'rect', space.skip = 0.0001, linetype = 0, fill = "steelblue",
