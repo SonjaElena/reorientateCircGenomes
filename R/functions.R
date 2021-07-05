@@ -120,7 +120,7 @@ processProkkagff <- function(x){
 reorientgff <- function(x, proteinID = NA, bplocation = bp_location, replicon = NA, Rep_size = fasta){
   
   
-  # replicon
+  # select replicon; largest by default or the supplied one
   if(is.na(replicon)){
     gff <- subset(x, Replicon == subset(data.frame(table(x$Replicon)), Freq == max(table(x$Replicon)))$Var1)
   }else{
@@ -139,10 +139,9 @@ reorientgff <- function(x, proteinID = NA, bplocation = bp_location, replicon = 
   
   
   # size of genome
-  
   if(class(Rep_size) == "DNAStringSet"){
     names(Rep_size) <- names(Rep_size) %>% strsplit(., " ") %>% sapply(.,"[",1)
-    chr_size2 <- Rep_size[names(Rep_size) %in% Rep_size[unique(gff$Replicon)]]
+    chr_size2 <- Rep_size[names(Rep_size) %in% unique(gff$Replicon)]
     chr_size <- width(chr_size2)
   }else{chr_size <- Rep_size}
   
@@ -185,7 +184,7 @@ reorientgff <- function(x, proteinID = NA, bplocation = bp_location, replicon = 
 #' @export
 reorientfna <- function(x, replicon = NA, bplocation = NA, proteinID = NA, gff = NA){
   
-  # replicon
+  # select replicon
   if(is.na(replicon)){
     x <- x[width(x) %in% max(width(x))]
   }else{
@@ -194,7 +193,7 @@ reorientfna <- function(x, replicon = NA, bplocation = NA, proteinID = NA, gff =
   }
   
   # location
-  if(!is.na(gff)){
+  if(nrow(gff)>1){
     bp_location <- subset(gff, ProteinID == proteinID)$start
   }else{bp_location=bplocation}
   
