@@ -123,7 +123,7 @@ circGenomePlot(x, gff = gff, proteinID = proteinID, reorigff = FALSE)
 
 * `proteinID` Vector of ProteinIDs to be indicated in the plot.
 
-* `reorientgff` If TRUE uses columns with names "Ostart" and "Oend" to obtain the base pair location. Defaults to FALSE and uses columns with names "start" and "end".
+* `reorientgff` If TRUE uses columns with names "Ostart" and "Oend" to obtain the base pair location that were generated using the reorientation functions above. Defaults to FALSE and uses columns with names "start" and "end".
 
 Return: 
 List containing the circular plot and data.frame of regulator location. The genome plot consists of four rings. The outer ring shows the position of the provided genes (black) and the location of the first gene (red). The third and second ring each show the genes located on the plus and minus strand. The inner ring shows the GC skew. Whereby locations with negative and positive GC skew values are color coded with light or dark gray, respectively. A sliding window of 10,000 bp is used for the GC skew.
