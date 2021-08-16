@@ -5,16 +5,8 @@ Version: 0.0.0.9000
 Authors@R: c(
     person("Sonja", "Koppenhöfer", email = "sonjakoppenhofer@gmail.com", role = c("aut", "cre")))
 Description: This package can process gff file types, derived from NCBI or Prokka and reorientate those, as well as genomic sequence file types in fna formate, based on a ProteinID or base pair position. Thereby the package can be used to adjust the circular chromosome on an origin of replication. The gff and fna files can then be used to generate a circular visualisation of a selected replicon e.g. the chromosome, including the GC skew and indication of the location of regulators of interest. 
-Depends:
-    R (>= 3.1.3)
-    Biostrings (>= 2.58.0),
-    BSgenome (>= 1.58.0),
-    tidyverse (>= 1.3.1),
-    ggbio (>= 1.38.0),
-    GenomeInfoDb (>= 1.26.7),
-    GenomicRanges (>= 1.42.0),
-    devtools (>= 2.4.1)
-Imports:
+Depends: R (>= 3.1.3)
+Imports: Biostrings (>= 2.58.0), BSgenome (>= 1.58.0), tidyverse (>= 1.3.1), ggbio (>= 1.38.0), GenomeInfoDb (>= 1.26.7), GenomicRanges (>= 1.42.0), devtools (>= 2.4.1)
 URL: https://github.com/SonjaElena/reorientateCircGenomes
 BugReports: https://github.com/SonjaElena/reorientateCircGenomes/issues
 Encoding: UTF-8
