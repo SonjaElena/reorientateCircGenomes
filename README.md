@@ -109,7 +109,7 @@ The reoriented DNA string set.
 
 Examples: 
 ``` C
-fasta <- reorientfna(x = dna_list, proteinID = "AAV93333.1", gff = gff3)
+fasta <- reorientfna(fasta_object = dna_list, proteinID = "AAV93333.1", gff = gff3)
 ```
 
 ### Generation of a circular genomic plot
