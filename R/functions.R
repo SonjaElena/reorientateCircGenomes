@@ -193,7 +193,7 @@ reorientfna <- function(x, replicon = NA, bplocation = NA, proteinID = NA, gff =
   }
   
   # location
-  if(nrow(gff)>1){
+  if(!is.na(gff)){
     bp_location <- subset(gff, ProteinID == proteinID)$start
   }else{bp_location=bplocation}
   
