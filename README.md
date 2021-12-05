@@ -4,9 +4,6 @@ reorientateCircGenomes
 ![image-01](https://user-images.githubusercontent.com/51213363/89195191-f9b3db00-d582-11ea-9638-7cbf209d9162.png)
 reorientateCircGenomes is an R package that allows the processing of gff (genomic feature format) file types that have been obtained from NCBI or by Prokka, as well as the reorientation of these and fna (nucleic acid fasta) files based on proteinID or base pair position. With this package, gff and fna files can be used to generate a visualization of the circular genome including GC skew and indication of selected gene locations.
 
-This package has first been introduced here:
-[**Koppenhöfer S., Tomasch J., Lang A.S.** Title. *Journal* year.](link here)
-
 ## Dependencies
 - [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html)
 - [BSgenome](http://bioconductor.org/packages/release/bioc/html/BSgenome.html)
